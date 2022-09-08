@@ -33,7 +33,9 @@ namespace TrackerLibrary
             }
             if (textFiles)
             {
-                // TODO - create the txt connection
+                // TODO - setup Text Connector properly
+                TextConnector text = new TextConnector();
+                Connections.Add(text);
             }
         }
     }
