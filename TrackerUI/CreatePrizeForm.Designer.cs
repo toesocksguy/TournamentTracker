@@ -50,7 +50,6 @@
             this.createPrizeHeader.Size = new System.Drawing.Size(209, 50);
             this.createPrizeHeader.TabIndex = 12;
             this.createPrizeHeader.Text = "Create Prize";
-            //this.createPrizeHeader.Click += new System.EventHandler(this.createTeamHeader_Click);
             // 
             // placeNumberValue
             // 
@@ -95,6 +94,7 @@
             this.prizeAmountValue.Name = "prizeAmountValue";
             this.prizeAmountValue.Size = new System.Drawing.Size(164, 23);
             this.prizeAmountValue.TabIndex = 28;
+            this.prizeAmountValue.Text = "0";
             // 
             // prizeAmountLabel
             // 
@@ -105,7 +105,6 @@
             this.prizeAmountLabel.Size = new System.Drawing.Size(176, 37);
             this.prizeAmountLabel.TabIndex = 27;
             this.prizeAmountLabel.Text = "Prize Amount";
-            //this.prizeAmountLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // prizePercentageValue
             // 
@@ -114,7 +113,7 @@
             this.prizePercentageValue.Name = "prizePercentageValue";
             this.prizePercentageValue.Size = new System.Drawing.Size(164, 23);
             this.prizePercentageValue.TabIndex = 30;
-            //this.prizePercentageValue.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.prizePercentageValue.Text = "0";
             // 
             // prizePercentageLabel
             // 
