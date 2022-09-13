@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrackerLibrary;
 
 namespace TrackerUI
 {
@@ -17,7 +18,23 @@ namespace TrackerUI
             InitializeComponent();
         }
 
-        private void createTeamHeader_Click(object sender, EventArgs e)
+        private void createPrizeButton_Click(object sender, EventArgs e)
+        {
+            if (ValidateForm())
+            {
+                PrizeModel model = new PrizeModel(
+                    placeNameValue.Text, 
+                    placeNumberValue.Text, 
+                    prizeAmountValue.Text, 
+                    prizePercentageValue.Text);
+
+                foreach (IDataConnection db in GlobalConfig.Connections)
+                {
+                    db.CreatePrize(model);
+                }
+            }
+        }
+
         {
 
         }
