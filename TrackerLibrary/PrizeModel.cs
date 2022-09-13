@@ -32,5 +32,6 @@ namespace TrackerLibrary
         /// Represents this prize percentage
         /// </summary>
         public double PrizePercentage { get; set; }
+
     }
 }
