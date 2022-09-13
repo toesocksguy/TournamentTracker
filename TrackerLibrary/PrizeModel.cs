@@ -33,5 +33,36 @@ namespace TrackerLibrary
         /// </summary>
         public double PrizePercentage { get; set; }
 
+        /// <summary>
+        /// Empty PrizeModel
+        /// </summary>
+        public PrizeModel()
+        {
+
+        }
+
+        /// <summary>
+        /// Overloaded constructor for PrizeModel. Tries to parse arguments and set properties.
+        /// </summary>
+        /// <param name="placeName">Place name</param>
+        /// <param name="placeNumber">Place number</param>
+        /// <param name="prizeAmount">Prize amount</param>
+        /// <param name="prizePercentage">Prize percentage</param>
+        public PrizeModel(string placeName, string placeNumber, string prizeAmount, string prizePercentage)
+        {
+            PlaceName = placeName;
+
+            int placeNumberValue = 0;
+            int.TryParse(placeNumber, out placeNumberValue);
+            PlaceNumber = placeNumberValue;
+
+            decimal prizeAmountValue = 0;
+            decimal.TryParse(prizeAmount, out prizeAmountValue);
+            PrizeAmount = prizeAmountValue;
+
+            double prizePercentageValue = 0;
+            double.TryParse(prizePercentage, out prizePercentageValue);
+            PrizePercentage = prizePercentageValue;
+        }
     }
 }
