@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrackerLibrary.Models
+namespace TrackerLibrary
 {
     public class PersonModel
     {
@@ -22,8 +22,8 @@ namespace TrackerLibrary.Models
         /// Represents this person's email address
         /// </summary>
         public string EmailAddress { get; set; }
-
-
+        
+        
         /// <summary>
         /// Represents this person's cellphone number
         /// </summary>
