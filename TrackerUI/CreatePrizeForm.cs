@@ -35,23 +35,67 @@ namespace TrackerUI
             }
         }
 
+        /// <summary>
+        /// Method to validate PrizeForm inputs.
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidateForm()
         {
+            // Validate Place Number
+            bool output = true;
+            int placeNumber = 0;
+            bool placeNumberValidNumber = int.TryParse(placeNumberValue.Text, out placeNumber);
 
-        }
+            if (placeNumberValidNumber == false)
+            {
+                output = false;
+                MessageBox.Show("Place Number must be a number.");
+            }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
+            if (placeNumber < 1)
+            {
+                output = false;
+                MessageBox.Show("Place Number must be at least one.");
+            }
 
-        }
+            if (placeNameValue.Text.Length == 0)
+            {
+                output = false;
+                MessageBox.Show("Place Name cannot be empty");
+            }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
+            // Validate Prize Amount or Prize Percentage
+            decimal prizeAmount = 0;
+            double prizePercentage = 0;
 
-        }
+            bool prizeAmountValid = decimal.TryParse(prizeAmountValue.Text, out prizeAmount);
+            bool prizePercentageValid = double.TryParse(prizePercentageValue.Text, out prizePercentage);
 
-        private void createPrizeButton_Click(object sender, EventArgs e)
-        {
+            if (prizeAmountValid == false)
+            {
+                output = false;
+                MessageBox.Show("Prize amount must be a number.");
+            }
 
+            if (prizePercentageValid == false)
+            {
+                output = false;
+                MessageBox.Show("Prize percentage must be a number.");
+            }
+
+            if (prizeAmount <= 0 && prizePercentage <= 0)
+            {
+                output = false;
+                MessageBox.Show("Prize amount and percentage must be greater than zero.");
+            }
+
+            if (prizePercentage < 0 || prizePercentage > 100)
+            {
+                output = false;
+                MessageBox.Show("Prize percentage cannot be less than zero or greater than 100.");
+            }
+
+            return output;
         }
     }
 }
