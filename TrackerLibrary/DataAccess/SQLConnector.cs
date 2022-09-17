@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess
@@ -17,9 +19,28 @@ namespace TrackerLibrary.DataAccess
         /// <returns>The prize information, including the unique ID.</returns>
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            model.Id = 1;
+            // TODO Setup error checks
 
-            return model;
+            // Open IDbConnection and fill with Sql connection
+            // Connection will close at the end
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            {
+                // Add Prize values to Dapper DynamicParameters object
+                var p = new DynamicParameters();
+                p.Add("@PlaceNumber", model.PlaceNumber);
+                p.Add("@PlaceName", model.PlaceName);
+                p.Add("@PrizeAmount", model.PrizeAmount);
+                p.Add("@PrizePercentage", model.PrizePercentage);
+                p.Add("@id", 0, dbType:DbType.Int32, direction: ParameterDirection.Output);
+
+                // Execute stored procedure
+                connection.Execute("dbo.spPrizes_Insert", p, commandType: CommandType.StoredProcedure);
+
+                // Get ID value (of type int) from DynamicParameter list
+                model.Id = p.Get<int>("@id");
+
+                return model;
+            }
         }
     }
 }
