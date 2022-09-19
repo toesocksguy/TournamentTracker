@@ -11,7 +11,6 @@ namespace TrackerLibrary.DataAccess
 {
     public class SQLConnector : IDataConnection
     {
-        // TODO - Make CreatePrize method actually save to the database
         /// <summary>
         /// Saves a new prize to the database
         /// </summary>
@@ -33,7 +32,7 @@ namespace TrackerLibrary.DataAccess
                 p.Add("@PrizePercentage", model.PrizePercentage);
                 p.Add("@id", 0, dbType:DbType.Int32, direction: ParameterDirection.Output);
 
-                // Execute stored procedure
+                // Execute db stored procedure
                 connection.Execute("dbo.spPrizes_Insert", p, commandType: CommandType.StoredProcedure);
 
                 // Get ID value (of type int) from DynamicParameter list
