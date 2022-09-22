@@ -15,13 +15,12 @@ namespace TrackerLibrary
         /// Gives the option to save to multiple files (database, text, etc)
         /// Only methods within the GlobalConfig class can change the value (private set)
         /// </summary>
-        public static IDataConnection Connections { get; private set; }
+        public static IDataConnection Connection { get; private set; }
 
         /// <summary>
-        /// Initialize data connections
+        /// Initialize database connection
         /// </summary>
-        /// <param name="database">The database information.</param>
-        /// <param name="textFiles">The text file information.</param>
+        /// <param name="dbType">Database type</param>
         public static void InitializeConnections(DatabaseType dbType) 
         {
             // if older c# (4.6?) version intialize here
@@ -31,13 +30,13 @@ namespace TrackerLibrary
             {
                 // TODO - setup SQL Connector properly
                 SQLConnector sql = new SQLConnector();
-                Connections = sql;
+                Connection = sql;
             }
             else if (dbType == DatabaseType.Textfile)
             {
                 // TODO - setup Text Connector properly
                 TextConnector text = new TextConnector();
-                Connections = text;
+                Connection = text;
             }
         }
 
