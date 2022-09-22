@@ -11,9 +11,25 @@ namespace TrackerLibrary.DataAccess.TextConnector
 {
     public static class TextConnectorProcessor
     {
+        // Load the text file
+
+        // Convert text to list of PrizeModel
+
+        // TODO - Find the max ID
+
+        // TODO - Add the new record with the new ID (max + 1)
+
+        // TODO - Convert the prizes to string list
+
+        // TODO - Save the string list to text file
+
+        /// <summary>
+        /// Use AppSettings key to get file path value then append filename.
+        /// </summary>
+        /// <param name="fileName">Name of text file</param>
+        /// <returns></returns>
         public static string FullFilePath(this string fileName)
         {
-            // Use AppSettings key to get file path value then append filename
             return $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
         }
 
@@ -30,6 +46,30 @@ namespace TrackerLibrary.DataAccess.TextConnector
             }
 
             return File.ReadAllLines(file).ToList();
+        }
+
+        /// <summary>
+        /// Create a list of PrizeModels. Split lines on comma and add to list of PrizeModel.
+        /// </summary>
+        /// <param name="lines">List of lines</param>
+        /// <returns></returns>
+        public static List<PrizeModel> ConvertToPrizeModel(this List<string> lines)
+        {
+            List<PrizeModel> output = new List<PrizeModel>();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split(',');
+
+                PrizeModel p = new PrizeModel();
+                p.Id = int.Parse(cols[0]);
+                p.PlaceNumber = int.Parse(cols[1]);
+                p.PlaceName = cols[2];
+                p.PrizeAmount = decimal.Parse(cols[3]);
+                p.PrizePercentage = double.Parse(cols[4]);
+
+                output.Add(p);
+            }
         }
     }
 }

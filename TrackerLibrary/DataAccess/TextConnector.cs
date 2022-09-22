@@ -17,9 +17,17 @@ namespace TrackerLibrary.DataAccess
         /// <returns>The prize info, including the unique ID.</returns>
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            model.Id = 1;
+            // TODO -Load the text file
 
-            return model;
+            // TODO -Convert text to list of PrizeModel
+
+            // TODO - Find the max ID
+
+            // TODO - Add the new record with the new ID (max + 1)
+
+            // TODO - Convert the prizes to string list
+
+            // TODO - Save the string list to text file
         }
     }
 }
