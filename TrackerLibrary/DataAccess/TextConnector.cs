@@ -34,6 +34,8 @@ namespace TrackerLibrary.DataAccess
             // Convert the prizes to string list
             // Save the string list to text file
             prizes.SaveToPrizeFile(PrizesFile);
+
+            return model;
         }
     }
 }
