@@ -21,17 +21,19 @@ namespace TrackerLibrary.DataAccess
         /// <returns>The prize info, including the unique ID.</returns>
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            // TODO -Load the text file
-            // TODO -Convert text to list of PrizeModel
+            // Load the text file and convert string list to list of PrizeModel
             List<PrizeModel> prizes = PrizesFile.FullFilePath().LoadFile().ConvertToPrizeModels();
-            
-            // TODO - Find the max ID
 
-            // TODO - Add the new record with the new ID (max + 1)
+            // Find the max ID by ordering by descending on the prizeID(using lambda expression) then get the first item and add 1
+            int currentID = prizes.OrderByDescending(x => x.Id).First().Id + 1;
+            model.Id = currentID;
 
-            // TODO - Convert the prizes to string list
+            // Add the new record with the new ID (max + 1)
+            prizes.Add(model);
 
-            // TODO - Save the string list to text file
+            // Convert the prizes to string list
+            // Save the string list to text file
+            prizes.SaveToPrizeFile(PrizesFile);
         }
     }
 }
