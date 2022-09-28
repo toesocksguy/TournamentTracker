@@ -53,7 +53,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
         /// </summary>
         /// <param name="lines">List of lines</param>
         /// <returns></returns>
-        public static List<PrizeModel> ConvertToPrizeModel(this List<string> lines)
+        public static List<PrizeModel> ConvertToPrizeModels(this List<string> lines)
         {
             List<PrizeModel> output = new List<PrizeModel>();
 

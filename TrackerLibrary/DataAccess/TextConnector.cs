@@ -23,7 +23,7 @@ namespace TrackerLibrary.DataAccess
         {
             // TODO -Load the text file
             // TODO -Convert text to list of PrizeModel
-            List<PrizeModel> prizes = PrizesFile.FullFilePath().LoadFile().ConvertToPrizeModel();
+            List<PrizeModel> prizes = PrizesFile.FullFilePath().LoadFile().ConvertToPrizeModels();
             
             // TODO - Find the max ID
 
