@@ -26,7 +26,7 @@ namespace TrackerUI
 
         private void createMemberButton_Click(object sender, EventArgs e)
         {
-            if (ValidateForm)
+            if (ValidateForm())
             {
                 PersonModel p = new PersonModel();
 
