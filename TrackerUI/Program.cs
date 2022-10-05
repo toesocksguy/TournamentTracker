@@ -16,7 +16,7 @@ namespace TrackerUI
 
             // Initialize the database connections
             // TODO - change DatabaseType for  testing
-            TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
+            TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Textfile);
 
             //Application.Run(new TournamentDashboardForm());
             Application.Run(new CreateTeamForm());
