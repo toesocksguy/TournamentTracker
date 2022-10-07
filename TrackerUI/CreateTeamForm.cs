@@ -14,14 +14,23 @@ namespace TrackerUI
 {
     public partial class CreateTeamForm : Form
     {
+        private List<PersonModel> availableTeamMembers = new List<PersonModel>();
+        private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
+
         public CreateTeamForm()
         {
             InitializeComponent();
+
+            WireUpLists();
         }
 
-        private void addNewMemberGroupbox_Enter(object sender, EventArgs e)
+        private void WireUpLists()
         {
+            selectMemberDropdown.DataSource = availableTeamMembers;
+            selectMemberDropdown.DisplayMember = "FullName";
 
+            teamMembersListbox.DataSource = selectedTeamMembers;
+            teamMembersListbox.DisplayMember = "FullName";
         }
 
         private void createMemberButton_Click(object sender, EventArgs e)
@@ -29,14 +38,17 @@ namespace TrackerUI
             if (ValidateForm())
             {
                 PersonModel p = new PersonModel();
-
+                
+                // Set properties of PersonalModel
                 p.FirstName = firstNameValue.Text;
                 p.LastName = lastNameValue.Text;
                 p.EmailAddress = emailValue.Text;
                 p.CellphoneNumber = cellphoneValue.Text;
 
+                // Save to database or text file
                 GlobalConfig.Connection.CreatePerson(p);
 
+                // Clear form fields
                 firstNameValue.Text = "";
                 lastNameValue.Text = "";
                 emailValue.Text = "";

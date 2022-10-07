@@ -127,7 +127,6 @@
             this.addNewMemberGroupbox.TabIndex = 20;
             this.addNewMemberGroupbox.TabStop = false;
             this.addNewMemberGroupbox.Text = "Add New Member";
-            this.addNewMemberGroupbox.Enter += new System.EventHandler(this.addNewMemberGroupbox_Enter);
             // 
             // createMemberButton
             // 
