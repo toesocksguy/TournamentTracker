@@ -60,5 +60,21 @@ namespace TrackerLibrary.DataAccess
                 return model;
             }
         }
+
+        /// <summary>
+        /// Queries the database for all People
+        /// </summary>
+        /// <returns>A List of People</returns>
+        public List<PersonModel> GetPerson_All()
+        {
+            List<PersonModel> output;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            {
+                // Use Dapper to run stored procedure and add to list of PersonModel
+                output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+            }
+
+            return output;
+        }
     }
 }

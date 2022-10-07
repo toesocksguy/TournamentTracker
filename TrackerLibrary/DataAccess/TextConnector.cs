@@ -66,5 +66,11 @@ namespace TrackerLibrary.DataAccess
 
             return model;
         }
+
+        // TODO - Wire this up
+        public List<PersonModel> GetPerson_All()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
