@@ -21,9 +21,14 @@ namespace TrackerUI
         {
             InitializeComponent();
 
+            //CreateSampleData(); // TODO - Delete
+
             WireUpLists();
         }
 
+        /// <summary>
+        /// Wire up the dropdown list and list box
+        /// </summary>
         private void WireUpLists()
         {
             selectMemberDropdown.DataSource = availableTeamMembers;
@@ -31,6 +36,18 @@ namespace TrackerUI
 
             teamMembersListbox.DataSource = selectedTeamMembers;
             teamMembersListbox.DisplayMember = "FullName";
+        }
+
+        // TODO - Delete this - creates sample data for testing
+        private void CreateSampleData()
+        {
+            availableTeamMembers.Add(new PersonModel { FirstName = "Marshall", LastName = "Harris" });
+            availableTeamMembers.Add(new PersonModel { FirstName = "Krystle", LastName = "Berry" });
+            availableTeamMembers.Add(new PersonModel { FirstName = "Asha", LastName = "Harris" });
+
+            selectedTeamMembers.Add(new PersonModel { FirstName = "Captain", LastName = "America" });
+            selectedTeamMembers.Add(new PersonModel { FirstName = "The", LastName = "Hulk" });
+            selectedTeamMembers.Add(new PersonModel { FirstName = "Iron", LastName = "Man" });
         }
 
         private void createMemberButton_Click(object sender, EventArgs e)
