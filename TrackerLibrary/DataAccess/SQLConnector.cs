@@ -13,6 +13,11 @@ namespace TrackerLibrary.DataAccess
     {
         private const string db = "Tournaments";
 
+        /// <summary>
+        /// Saves a person to the database
+        /// </summary>
+        /// <param name="model">The person information</param>
+        /// <returns>Returns the person model</returns>
         public PersonModel CreatePerson(PersonModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
