@@ -31,8 +31,14 @@ namespace TrackerUI
         /// </summary>
         private void WireUpLists()
         {
+            // "refresh" the datasource so the dropdown reflects changes from addMemberButton click
+            selectMemberDropdown.DataSource = null; // TODO - this seems wonky. Is there a better way to do it?
+
             selectMemberDropdown.DataSource = availableTeamMembers;
             selectMemberDropdown.DisplayMember = "FullName";
+
+            // "refresh" the datasource so the listbox reflects changes from addMemberButton click
+            teamMembersListbox.DataSource = null; // TODO - this seems wonky. Is there a better way to do it?
 
             teamMembersListbox.DataSource = selectedTeamMembers;
             teamMembersListbox.DisplayMember = "FullName";
