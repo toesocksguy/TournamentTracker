@@ -71,6 +71,11 @@ namespace TrackerUI
                 // Save to database or text file
                 p = GlobalConfig.Connection.CreatePerson(p);
 
+                // Add created member to selectedTeamMembers
+                selectedTeamMembers.Add(p);
+
+                WireUpLists();
+
                 // Clear form fields
                 firstNameValue.Text = "";
                 lastNameValue.Text = "";
