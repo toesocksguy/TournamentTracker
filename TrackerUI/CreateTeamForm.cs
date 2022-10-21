@@ -69,7 +69,7 @@ namespace TrackerUI
                 p.CellphoneNumber = cellphoneValue.Text;
 
                 // Save to database or text file
-                GlobalConfig.Connection.CreatePerson(p);
+                p = GlobalConfig.Connection.CreatePerson(p);
 
                 // Clear form fields
                 firstNameValue.Text = "";
