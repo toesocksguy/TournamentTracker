@@ -44,10 +44,10 @@ namespace TrackerLibrary.DataAccess
         }
 
         /// <summary>
-        /// Save people info to text file
+        /// Save PersonModel to text file
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
+        /// <returns>PersonModel including ID</returns>
         public PersonModel CreatePerson(PersonModel model)
         {
             List<PersonModel> people = PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
@@ -67,10 +67,13 @@ namespace TrackerLibrary.DataAccess
             return model;
         }
 
-        // TODO - Wire this up
+        /// <summary>
+        /// Save people info to text file
+        /// </summary>
+        /// <returns>Text file of people</returns>
         public List<PersonModel> GetPerson_All()
         {
-            throw new NotImplementedException();
+            return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
         }
     }
 }
